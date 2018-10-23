@@ -11,9 +11,14 @@ public class FindMeFinder {
             return;
         }
 
+        String klassenName = args[0];
 
-        Method[] methods = TestFindMeAnnotation.class.getMethods();
-        Field[]  fields = TestFindMeAnnotation.class.getFields();
+
+        //Method[] methods = TestFindMeAnnotation.class.getMethods();
+        //Field[]  fields = TestFindMeAnnotation.class.getFields();
+
+        Method[] methods = Class.forName(klassenName).getMethods();
+        Field[]  fields = Class.forName(klassenName).getFields();
 
         System.out.println("");
         System.out.print("Mit @FindMe annotierte Methoden:");
