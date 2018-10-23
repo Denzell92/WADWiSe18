@@ -13,6 +13,12 @@ public class FindMeFinder {
 
         String klassenName = args[0];
 
+        if(klassenName == "" || klassenName == null || Class.forName(klassenName) == null){
+            System.out.print("Der Name der Klasse ist nicht korrekt!");
+            return;
+        }
+
+        System.out.println("Die untersuchte Klasse: " + klassenName);
 
         //Method[] methods = TestFindMeAnnotation.class.getMethods();
         //Field[]  fields = TestFindMeAnnotation.class.getFields();
