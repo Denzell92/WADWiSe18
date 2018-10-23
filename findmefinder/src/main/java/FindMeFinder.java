@@ -6,6 +6,12 @@ public class FindMeFinder {
 
     public static void main( String[] args ) throws Exception
     {
+        if(args.length <= 0){
+            System.out.print("Sie muessen einen Parameter uebergeben!");
+            return;
+        }
+
+
         Method[] methods = TestFindMeAnnotation.class.getMethods();
         Field[]  fields = TestFindMeAnnotation.class.getFields();
 
@@ -31,7 +37,8 @@ public class FindMeFinder {
             }
         }
 
-
+        System.out.println("");
+        System.out.println("");
         System.out.print("Mit @FindMe annotierte Fields:");
         for(Field f : fields){
             if( f.isAnnotationPresent( FindMe.class ) ) {
@@ -39,6 +46,7 @@ public class FindMeFinder {
                 System.out.println("");
 
                 System.out.print(Modifier.toString(f.getModifiers()));
+                System.out.print(" ");
                 System.out.print(f.getType());
 
                 System.out.print(" ");
