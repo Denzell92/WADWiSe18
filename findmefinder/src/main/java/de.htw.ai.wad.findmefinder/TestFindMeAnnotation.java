@@ -1,3 +1,7 @@
+package de.htw.ai.wad.findmefinder;
+
+import de.htw.ai.wad.findmefinder.FindMe;
+
 import java.lang.annotation.Retention; import java.lang.annotation.RetentionPolicy;
 
 import java.lang.reflect.Field; import java.lang.reflect.Method;

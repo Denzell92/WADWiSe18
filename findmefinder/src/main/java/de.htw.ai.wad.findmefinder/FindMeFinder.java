@@ -1,3 +1,6 @@
+package de.htw.ai.wad.findmefinder;
+
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
