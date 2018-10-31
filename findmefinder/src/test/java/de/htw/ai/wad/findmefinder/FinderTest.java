@@ -30,7 +30,7 @@ public class FinderTest {
 
     @Test
     public void findAnnotatedMethodsClassNotLoadedTest() {
-        boolean actual = Finder.findAnnotatedMethods("");
+        boolean actual = Finder.findAnnotatedMethods(null);
         boolean expected = false;
         assertEquals(expected,actual);
     }
@@ -51,7 +51,7 @@ public class FinderTest {
 
     @Test
     public void findAnnotatedFieldsClassNotLoadedTest() {
-        boolean actual = Finder.findAnnotatedMethods("");
+        boolean actual = Finder.findAnnotatedMethods(null);
         boolean expected = false;
         assertEquals(expected, actual);
     }

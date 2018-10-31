@@ -16,8 +16,6 @@ public class Finder {
         if(klassenName == null){
             return false;
         }
-
-
         try {
             methodList = new ArrayList<Method>();
             Method[] methods = Class.forName(klassenName).getDeclaredMethods();
