@@ -11,7 +11,13 @@ import java.lang.reflect.Modifier;
 
     public class TestFindMeAnnotation {
         @FindMe
-        public int a;
+        public static int a;
+
+        @FindMe
+        public final String finalString = "Hello";
+
+        @FindMe
+        private double doubleValue;
 
         @FindMe
         public static void meineMethodeMitAnnotation(int a) {
@@ -22,6 +28,21 @@ import java.lang.reflect.Modifier;
         public void meineMdd(int a) {
             //...
         }
+
+        @FindMe
+        private String stringMethode(String beispielString){
+            //..
+            return null;
+        }
+
+        @FindMe
+        public static void staticMethode()
+        {
+            //..
+        }
+
+
+
     }
 
 

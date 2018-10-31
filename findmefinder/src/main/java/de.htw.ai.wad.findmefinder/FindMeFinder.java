@@ -9,7 +9,24 @@ public class FindMeFinder {
 
     public static void main( String[] args ) throws Exception
     {
-        if(args.length <= 0){
+        if (args.length<=0)
+        {
+            System.out.println("Sie muessen einen Parameter uebergeben!");
+        } else {
+            String klassenName = args[0];
+            System.out.println("Die untersuchte Klasse: " + klassenName);
+            System.out.println();
+            System.out.println("Mit findMe annotierte Methoden:");
+            Finder.findAnnotatedMethods(klassenName);
+            System.out.println();
+            System.out.println("Mit findMe annotierte Felder:");
+            Finder.findAnnotatedFields(klassenName);
+        }
+
+
+
+
+        /*if(args.length <= 0){
             System.out.print("Sie muessen einen Parameter uebergeben!");
             return;
         }
@@ -66,7 +83,7 @@ public class FindMeFinder {
                 System.out.print(" ");
                 System.out.print(f.getName());
             }
-        }
+        }*/
 
 
 
