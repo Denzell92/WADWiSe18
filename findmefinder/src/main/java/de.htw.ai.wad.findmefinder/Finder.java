@@ -13,6 +13,11 @@ public class Finder {
 
     public static boolean findAnnotatedMethods(String klassenName)
     {
+        if(klassenName == null){
+            return false;
+        }
+
+
         try {
             methodList = new ArrayList<Method>();
             Method[] methods = Class.forName(klassenName).getDeclaredMethods();
@@ -43,6 +48,10 @@ public class Finder {
 
     public static boolean findAnnotatedFields(String klassenName)
     {
+        if(klassenName == null){
+            return false;
+        }
+        
         try {
             fieldList = new ArrayList<Field>();
             Field[]  fields = Class.forName(klassenName).getDeclaredFields();
