@@ -1,0 +1,76 @@
+body {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 0%;
+    padding: 0;
+    background-color: #FFFFE0;
+    font-family: sans-serif;
+}
+
+h1 {
+    font-style: italic;
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+
+}
+
+.login {
+    float: left;
+    width: 100%;
+    padding: 0px;
+    background: #555;;
+    color: white;
+}
+
+ul {
+    float: right;
+    list-style: none;
+}
+
+li {
+    float: left;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+div {
+    background: lightblue;
+}
+
+#map {
+    text-align: center;
+}
+
+.main {
+    background: lightblue;
+    margin: auto;
+    padding: 20px;
+
+}
+
+#friendList {
+    background: darkgray;
+    margin-left: 0;
+    float: left;
+    padding: 10px;
+    width: 30%;
+}
+
+#addFriend {
+    margin-left: 0%;
+    float: left;
+    padding: 10px;
+    width: 30%;
+}
+
+#updateDelete {
+    margin-left: 0%;
+    float: left;
+    padding: 10px;
+    width: 30%;
+}
