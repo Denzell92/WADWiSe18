@@ -23,16 +23,8 @@
 	</div>
 
     <div id="friendList" class="loggedIn"  >
-
-        <table>
-            <tr><h2>FriendList</h2></tr>
-            <tr><button type="button" class="nameButton" >Peter</button></tr>	<br>
-            <tr><button type="button" class="nameButton" >Marie</button></tr>	<br>
-            <tr><button type="button" class="nameButton" >Arnold</button></tr>	<br>
-            <tr><button type="button" class="nameButton" >Andreas</button></tr>	<br>
-            <tr><button type="button" class="nameButton" >Julia</button></tr>	<br>
-            <tr><button type="button" class="nameButton" >Mario</button></tr>	<br>
-            <tr><button type="button">Add</button></tr>
+	    <tr><h2>FriendList</h2></tr> 
+        <table id="friendTable" >
         </table>
     </div>
 
@@ -45,6 +37,10 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
+                <td>Vorname</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
                 <td>Strasse:</td>
                 <td><input type="text"></td>
             </tr>
@@ -54,10 +50,6 @@
             </tr>
             <tr>
                 <td>Land:</td>
-                <td><input type="text"></td>
-            </tr>
-            <tr>
-                <td>Name</td>
                 <td><input type="text"></td>
             </tr>
             <tr>
@@ -77,6 +69,10 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
+                <td>Vorname</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
                 <td>Strasse:</td>
                 <td><input type="text"></td>
             </tr>
@@ -89,15 +85,11 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td>Name</td>
-                <td><input type="text"></td>
-            </tr>
-            <tr>
                 <input type="checkbox">
             </tr>
         </table>
-            <button type="button">Update</button>
-        <button type="button">Delete</button>
+            <button type="button" id="updateButton">Update</button>
+        <button type="button" id="deleteButton" >Delete</button>
     </div>
     
     <div id="map" class="loggedIn"  >
@@ -112,8 +104,30 @@
 
 <script>
 
-//document.getElementById("main").innerHTML = '<div class="login">'+
+class Person{
+	constructor(name,vorname,strasse,plz,stadt,land){
+		this.name = name;
+		this.vorname = vorname;
+		this.strasse = strasse;
+		this.plz = plz;
+		this.land = land;
+	        this.stadt = stadt;
+	}
+}
 
+var personenArray = new Array(10);
+
+personenArray[0] = new Person("Mueller","Peter","Hauptstrasse 12","11111","Berlin","Deutschland");
+personenArray[1] = new Person("Mueller","Peter","Hauptstrasse 12","11111","Berlin","Deutschland");
+personenArray[2] = new Person("Mueller","Peter","Hauptstrasse 12","11111","Berlin","Deutschland");
+
+var personenZaehler = 3;
+document.getElementById("friendTable").innerHTML = ""; 
+
+for(var i = 0; i<personenZaehler;i++){
+	var tabellenEintrag = ' <tr><button type="button" class="nameButton" >'+personenArray[i].vorname+" "+personenArray[i].name+'</button></tr>	<br>';
+	document.getElementById("friendTable").innerHTML =  document.getElementById("friendTable").innerHTML + tabellenEintrag;
+}
 
 var e = document.getElementsByClassName("loggedIn");
 for(var i=0; i<e.length; i++) {
@@ -132,6 +146,19 @@ for(var i=0; i<er.length; i++) {
 }
 
 
+
+document.getElementById("updateButton").onclick = function(){ 
+	document.getElementById("addFriend").style.display = "block";
+	document.getElementById("updateDelete").style.display = "none";
+};
+
+
+
+document.getElementById("deleteButton").onclick = function(){ 
+	document.getElementById("addFriend").style.display = "block";
+	document.getElementById("updateDelete").style.display = "none";
+};
+
 document.getElementById("loginButton").onclick = function(){
 	document.getElementById("lgn").style.display = "none";
 	var es = document.getElementsByClassName("loggedIn");
@@ -140,6 +167,20 @@ document.getElementById("loginButton").onclick = function(){
 	}
 	document.getElementById("updateDelete").style.display = "none";
 };
+
+
+
+function updateFriendList(){
+
+
+}
+
+
+
+
+
+
+
 
 
 </script>
