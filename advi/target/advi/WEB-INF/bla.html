@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <script>
+        function initialize() {
+            var address = 'Kolkata';
+            geocoder = new google.maps.Geocoder();
+            geocoder.geocode({
+                'address': address
+            }, function(results, status) {
+                var lat=document.getElementById("lat").innerHTML=results[0].geometry.location.lat();
+                var lng=document.getElementById("lng").innerHTML=results[0].geometry.location.lng();
+            });
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+</head>
+<body>
+<p id="lat"></p>
+<p id="lng"></p>
+</body>
+</html>
+
+<div id="map" class="loggedIn"  >
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2431.2259950551547!2d13.524255015598666!3d52.456934448653726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a848bc4c146fdd%3A0xcdaef78fbd909c09!2sHochschule+f%C3%BCr+Technik+und+Wirtschaft+Berlin+-+Campus+Wilhelminenhof!5e0!3m2!1sde!2sde!4v1542290426277" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+</div>
