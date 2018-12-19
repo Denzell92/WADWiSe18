@@ -34,47 +34,6 @@ function logIn(){
     updateList();
 }
 
-
-/*document.getElementById("friendTable").innerHTML = "";
-
-for(var i = 0; i<personenArray.length;i++){
-    var tabellenEintrag = ' <tr><button type="button" class="nameButton" >'+ personenArray[i].vorname + " " + personenArray[i].name + '</button></tr><br>';
-    document.getElementById("friendTable").innerHTML =  document.getElementById("friendTable").innerHTML + tabellenEintrag;
-}*/
-/*
-var e = document.getElementsByClassName("loggedIn");
-for(var i=0; i<e.length; i++) {
-    e[i].style.display = "none";
-    updateList();
-}
-
-var er = document.getElementsByClassName("nameButton");
-for(var i=0; i<er.length; i++) {
-    er[i].onclick = function(){
-        document.getElementById("addFriend").style.display = "none";
-        document.getElementById("updateDelete").style.display = "block";
-    }
-}
-
-document.getElementById("updateButton").onclick = function(){
-    document.getElementById("addFriend").style.display = "block";
-    document.getElementById("updateDelete").style.display = "none";
-};
-
-document.getElementById("deleteButton").onclick = function(){
-    document.getElementById("addFriend").style.display = "block";
-    document.getElementById("updateDelete").style.display = "none";
-};
-
-document.getElementById("loginButton").onclick = function(){
-    document.getElementById("lgn").style.display = "none";
-    var es = document.getElementsByClassName("loggedIn");
-    for(var i=0; i<es.length; i++) {
-        es[i].style.display = "block";
-    }
-    document.getElementById("updateDelete").style.display = "none";
-};
-*/
 function addFriend(){
     var msgName = document.getElementById("addName").value;
     var msgVorname = document.getElementById("addVorname").value;
@@ -96,8 +55,6 @@ function updateList(){
         button.innerHTML = personenArray[i].name + " " + personenArray[i].vorname;
 
         document.getElementById("friendTable").appendChild(button);
-        //var tabellenEintrag = ' <tr><button type="button" class="nameButton" onclick="updatePerson()">'+ personenArray[i].vorname + " " + personenArray[i].name + '</button></tr><br>';
-        //document.getElementById("friendTable").innerHTML =  document.getElementById("friendTable").innerHTML + tabellenEintrag;
     }
     document.getElementById("addFriend").style.display = "none";
 }
@@ -161,12 +118,4 @@ function updateScreen(){
 
 function showAddFriend() {
     document.getElementById("addFriend").style.display = "block"
-}
-
-function initMap() {
-    var map;
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
-    });
 }
