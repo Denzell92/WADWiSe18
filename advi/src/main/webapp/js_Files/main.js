@@ -1,5 +1,14 @@
 
 
+
+
+
+
+
+
+
+
+
 class Person{
     constructor(name,vorname,strasse,plz,stadt,land, id){
         this.name = name;
@@ -20,10 +29,8 @@ if(tempPersonen == null){
 	personenArray.push(new Person("Dennis","Adler","Rummelsburgerstraße 35a","10315","Berlin","Deutschland","1"));
 	personenArray.push(new Person("Eduard","Seiler","Klarastraße 2","12459","Berlin","Deutschland", "2"));
 	personenArray.push(new Person("Mueller","Peter","Hauptstrasse 12","11111","Berlin","Deutschland", "3"));
-	alert("yaya");
 }else{
 	personenArray = tempPersonen;
-	alert("yo");
 }
 //localStorage.setItem("nameOfFriends",personenArray);
 
@@ -37,6 +44,7 @@ document.getElementById("actualProperties").style.display = "none";
 function logIn(){
     document.getElementById("lgn").style.display = "none";
     document.getElementById("friendList").style.display = "block";
+    document.getElementById("map").style.display = "block";
     localStorage.getItem("nameOfFriends");
     updateList();
 }
