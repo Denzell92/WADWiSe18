@@ -14,11 +14,18 @@ class Person{
 
 var num;
 var personenArray = new Array();
+var tempPersonen =JSON.parse(localStorage.getItem('personenArray')); 
 
-localStorage.setItem("nameOfFriends",personenArray);
-personenArray.push(new Person("Dennis","Adler","Rummelsburgerstraße 35a","10315","Berlin","Deutschland","1"));
-personenArray.push(new Person("Eduard","Seiler","Klarastraße 2","12459","Berlin","Deutschland", "2"));
-personenArray.push(new Person("Mueller","Peter","Hauptstrasse 12","11111","Berlin","Deutschland", "3"));
+if(tempPersonen == null){ 
+	personenArray.push(new Person("Dennis","Adler","Rummelsburgerstraße 35a","10315","Berlin","Deutschland","1"));
+	personenArray.push(new Person("Eduard","Seiler","Klarastraße 2","12459","Berlin","Deutschland", "2"));
+	personenArray.push(new Person("Mueller","Peter","Hauptstrasse 12","11111","Berlin","Deutschland", "3"));
+	alert("yaya");
+}else{
+	personenArray = tempPersonen;
+	alert("yo");
+}
+//localStorage.setItem("nameOfFriends",personenArray);
 
 
 document.getElementById("friendList").style.display = "none";
@@ -57,14 +64,15 @@ function updateList(){
         document.getElementById("friendTable").appendChild(button);
     }
     document.getElementById("addFriend").style.display = "none";
+	localStorage.setItem('personenArray', JSON.stringify(personenArray));
 }
 
 function showPerson(clicked_id){
     num = clicked_id;
-    alert(num);
 
     document.getElementById("updateDelete").style.display = "block";
     document.getElementById("actualProperties").style.display = "block";
+    document.getElementById("addFriend").style.display = "none"
 
     document.getElementById("actName").innerText = "Name: " + personenArray[num].name;
     document.getElementById("actVorname").innerText = "Vorname: " + personenArray[num].vorname;
@@ -118,4 +126,6 @@ function updateScreen(){
 
 function showAddFriend() {
     document.getElementById("addFriend").style.display = "block"
+    document.getElementById("updateDelete").style.display = "none";
+    document.getElementById("actualProperties").style.display = "none";
 }
