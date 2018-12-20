@@ -2,107 +2,122 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js_Files/main.js" async></script>
 </head>
+
 <body>
+<div class="main" id="main">
+	<div id="lgn" class="login">
+		<h1>Advi - the professional way to manage your life</h1>
+		<form>
+		<ul>
+			<li>Login:</li>
+			<li><input type="text"></li>
+			<li>Password:</li>
+			<li><input type="text"></li>
+			<li><button type="button" id="loginButton" onclick="logIn()">Login</button></li>
+		</ul>
+		</form>
+	</div>
 
-<div class="login">
-    <h1>Advi - the professional way to manage your life</h1>
-    <form>
-        <ul>
-            <li>Login:</li>
-            <li><input type="text"></li>
-            <li>Password:</li>
-            <li><input type="text"></li>
-            <li><button type="button">Login</button></li>
-        </ul>
-    </form>
-</div>
-
-<div class="main">
-
-    <div id="friendList">
-
-        <table>
-            <tr><h2>FriendList</h2></tr>
-            <tr><p>Anne</p></tr>
-            <tr><p>Peter</p></tr>
-            <tr><p>Julia</p></tr>
-            <tr><p>Andreas</p></tr>
-            <tr><p>Stefan</p></tr>
-            <tr><button type="button">Add</button></tr>
+    <div id="friendList" class="loggedIn"  >
+	    <tr><h2>FriendList</h2></tr>
+        <button onclick="showAddFriend()">Add Friend</button>
+        <table id="friendTable">
         </table>
     </div>
 
-
-    <div id="addFriend">
+    <div id="addFriend" class="loggedIn">
         <table>
             <tr><h2>Add Address</h2></tr>
             <tr>
                 <td>Name:</td>
-                <td><input type="text"></td>
+                <td><input type="text" id="addName"></td>
+            </tr>
+            <tr>
+                <td>Vorname</td>
+                <td><input type="text" id="addVorname"></td>
             </tr>
             <tr>
                 <td>Strasse:</td>
-                <td><input type="text"></td>
+                <td><input type="text" id="addStreet"></td>
             </tr>
             <tr>
                 <td>PLZ:</td>
-                <td><input type="text"></td>
+                <td><input type="text" id="addPlz"></td>
+            </tr>
+            <tr>
+                <td>Stadt</td>
+                <td><input type="text" id="addTown"></td>
             </tr>
             <tr>
                 <td>Land:</td>
-                <td><input type="text"></td>
-            </tr>
-            <tr>
-                <td>Name</td>
-                <td><input type="text"></td>
-            </tr>
-            <tr>
-                <input type="checkbox">
+                <td><input type="text" id="addLand"></td>
             </tr>
         </table>
-        <button type="button">Add</button>
+        <button type="button" onclick="addFriend()">Add</button>
     </div>
 
 
-    <div id="updateDelete">
-
+    <div id="updateDelete" class="loggedIn"  >
         <table>
             <tr><h2>Update/Delete</h2></tr>
             <tr>
                 <td>Name:</td>
-                <td><input type="text"></td>
+                <td><input type="text" id="updName"></td>
+            </tr>
+            <tr>
+                <td>Vorname</td>
+                <td><input type="text" id="updVorname"></td>
             </tr>
             <tr>
                 <td>Strasse:</td>
-                <td><input type="text"></td>
+                <td><input type="text" id="updStreet"></td>
             </tr>
             <tr>
                 <td>PLZ:</td>
-                <td><input type="text"></td>
+                <td><input type="text" id="updPlz"></td>
+            </tr>
+            <tr>
+                <td>Stadt:</td>
+                <td><input type="text" id="updTown"></td>
             </tr>
             <tr>
                 <td>Land:</td>
-                <td><input type="text"></td>
-            </tr>
-            <tr>
-                <td>Name</td>
-                <td><input type="text"></td>
-            </tr>
-            <tr>
-                <input type="checkbox">
+                <td><input type="text" id="updLand"></td>
             </tr>
         </table>
-            <button type="button">Update</button>
-        <button type="button">Delete</button>
+        <button type="button" id="updateButton" onclick="updatePerson()">Update</button>
+        <button type="button" id="deleteButton" onclick="deletePerson()">Delete</button>
+    </div>
+
+    <div id="actualProperties" class="loggedIn">
+
+        <tr><h2>Actual Informations</h2></tr>
+        <div id="actName"></div>
+        <div id="actVorname"></div>
+        <div id="actAdresse"></div>
+        <div id="actPlz"></div>
+        <div id="actStadt"></div>
+        <div id="actLand"></div>
+    </div>
+
+    <div id="map" class="loggedIn">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2431.2259950551547!2d13.524255015598666!3d52.456934448653726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a848bc4c146fdd%3A0xcdaef78fbd909c09!2sHochschule+f%C3%BCr+Technik+und+Wirtschaft+Berlin+-+Campus+Wilhelminenhof!5e0!3m2!1sde!2sde!4v1542290426277" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
 
 </div>
-
-
-<div id="map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2431.2259950551547!2d13.524255015598666!3d52.456934448653726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a848bc4c146fdd%3A0xcdaef78fbd909c09!2sHochschule+f%C3%BCr+Technik+und+Wirtschaft+Berlin+-+Campus+Wilhelminenhof!5e0!3m2!1sde!2sde!4v1542290426277" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-</div>
-
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
