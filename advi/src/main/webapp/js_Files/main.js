@@ -1,14 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
 class Person{
     constructor(name,vorname,strasse,plz,stadt,land, id){
         this.name = name;
@@ -23,28 +13,19 @@ class Person{
 
 var num;
 var personenArray = new Array();
-var tempPersonen =JSON.parse(localStorage.getItem('personenArray')); 
+var tempPersonen =JSON.parse(localStorage.getItem('personenArray'));
 
-if(tempPersonen == null){ 
-	personenArray.push(new Person("Dennis","Adler","Rummelsburgerstraße 35a","10315","Berlin","Deutschland","1"));
-	personenArray.push(new Person("Eduard","Seiler","Klarastraße 2","12459","Berlin","Deutschland", "2"));
-	personenArray.push(new Person("Mueller","Peter","Hauptstrasse 12","11111","Berlin","Deutschland", "3"));
+if(tempPersonen == null){
+    personenArray.push(new Person("Dennis","Adler","Rummelsburgerstraße 35a","10315","Berlin","Deutschland","1"));
+    personenArray.push(new Person("Eduard","Seiler","Klarastraße 2","12459","Berlin","Deutschland", "2"));
+    personenArray.push(new Person("Mueller","Peter","Hauptstrasse 12","11111","Berlin","Deutschland", "3"));
 }else{
-	personenArray = tempPersonen;
+    personenArray = tempPersonen;
 }
-//localStorage.setItem("nameOfFriends",personenArray);
-
-
-document.getElementById("friendList").style.display = "none";
-document.getElementById("addFriend").style.display = "none";
-document.getElementById("updateDelete").style.display = "none";
-document.getElementById("map").style.display = "none";
-document.getElementById("actualProperties").style.display = "none";
 
 function logIn(){
-    document.getElementById("lgn").style.display = "none";
+    document.getElementById("login").style.display = "none";
     document.getElementById("friendList").style.display = "block";
-    document.getElementById("map").style.display = "block";
     localStorage.getItem("nameOfFriends");
     updateList();
 }
@@ -72,7 +53,7 @@ function updateList(){
         document.getElementById("friendTable").appendChild(button);
     }
     document.getElementById("addFriend").style.display = "none";
-	localStorage.setItem('personenArray', JSON.stringify(personenArray));
+    localStorage.setItem('personenArray', JSON.stringify(personenArray));
 }
 
 function showPerson(clicked_id){
@@ -80,7 +61,9 @@ function showPerson(clicked_id){
 
     document.getElementById("updateDelete").style.display = "block";
     document.getElementById("actualProperties").style.display = "block";
-    document.getElementById("addFriend").style.display = "none"
+    initMap();
+    document.getElementById("map").style.display = "block";
+    document.getElementById("addFriend").style.display = "none";
 
     document.getElementById("actName").innerText = "Name: " + personenArray[num].name;
     document.getElementById("actVorname").innerText = "Vorname: " + personenArray[num].vorname;
@@ -109,6 +92,7 @@ function updatePerson(){
 
     document.getElementById("updateDelete").style.display = "none";
     document.getElementById("actualProperties").style.display = "none";
+    document.getElementById("map").style.display = "none";
 
 }
 
@@ -120,12 +104,13 @@ function deletePerson(){
 
     document.getElementById("updateDelete").style.display = "none";
     document.getElementById("actualProperties").style.display = "none";
+    document.getElementById("map").style.display = "none";
 }
 
 function updateScreen(){
     var er = document.getElementsByClassName("nameButton");
-        for(var i=0; i<er.length; i++) {
-            er[i].onclick = function () {
+    for(var i=0; i<er.length; i++) {
+        er[i].onclick = function () {
             document.getElementById("addFriend").style.display = "none";
             document.getElementById("updateDelete").style.display = "block";
         }
@@ -136,4 +121,33 @@ function showAddFriend() {
     document.getElementById("addFriend").style.display = "block"
     document.getElementById("updateDelete").style.display = "none";
     document.getElementById("actualProperties").style.display = "none";
+}
+
+function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: {lat: 52.520008, lng: 13.404954}
+    });
+    var geocoder = new google.maps.Geocoder();
+
+    geocodeAddress(geocoder, map);
+    //document.getElementById('submit').addEventListener('click', function() {
+    //    geocodeAddress(geocoder, map);
+    //});
+}
+
+function geocodeAddress(geocoder, resultsMap) {
+    var address = personenArray[num].strasse + "." + personenArray[num].plz + "," + personenArray[num].stadt + "," + personenArray[num].land;
+    //var address = document.getElementById('address').value;
+    geocoder.geocode({'address': address}, function(results, status) {
+        if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: resultsMap,
+                position: results[0].geometry.location
+            });
+        } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+        }
+    });
 }

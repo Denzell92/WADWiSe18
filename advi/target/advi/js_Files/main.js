@@ -1,5 +1,14 @@
 
 
+
+
+
+
+
+
+
+
+
 class Person{
     constructor(name,vorname,strasse,plz,stadt,land, id){
         this.name = name;
@@ -14,11 +23,16 @@ class Person{
 
 var num;
 var personenArray = new Array();
+var tempPersonen =JSON.parse(localStorage.getItem('personenArray')); 
 
-localStorage.setItem("nameOfFriends",personenArray);
-personenArray.push(new Person("Dennis","Adler","Rummelsburgerstraße 35a","10315","Berlin","Deutschland","1"));
-personenArray.push(new Person("Eduard","Seiler","Klarastraße 2","12459","Berlin","Deutschland", "2"));
-personenArray.push(new Person("Mueller","Peter","Hauptstrasse 12","11111","Berlin","Deutschland", "3"));
+if(tempPersonen == null){ 
+	personenArray.push(new Person("Dennis","Adler","Rummelsburgerstraße 35a","10315","Berlin","Deutschland","1"));
+	personenArray.push(new Person("Eduard","Seiler","Klarastraße 2","12459","Berlin","Deutschland", "2"));
+	personenArray.push(new Person("Mueller","Peter","Hauptstrasse 12","11111","Berlin","Deutschland", "3"));
+}else{
+	personenArray = tempPersonen;
+}
+//localStorage.setItem("nameOfFriends",personenArray);
 
 
 document.getElementById("friendList").style.display = "none";
@@ -30,51 +44,11 @@ document.getElementById("actualProperties").style.display = "none";
 function logIn(){
     document.getElementById("lgn").style.display = "none";
     document.getElementById("friendList").style.display = "block";
+    document.getElementById("map").style.display = "block";
     localStorage.getItem("nameOfFriends");
     updateList();
 }
 
-
-/*document.getElementById("friendTable").innerHTML = "";
-
-for(var i = 0; i<personenArray.length;i++){
-    var tabellenEintrag = ' <tr><button type="button" class="nameButton" >'+ personenArray[i].vorname + " " + personenArray[i].name + '</button></tr><br>';
-    document.getElementById("friendTable").innerHTML =  document.getElementById("friendTable").innerHTML + tabellenEintrag;
-}*/
-/*
-var e = document.getElementsByClassName("loggedIn");
-for(var i=0; i<e.length; i++) {
-    e[i].style.display = "none";
-    updateList();
-}
-
-var er = document.getElementsByClassName("nameButton");
-for(var i=0; i<er.length; i++) {
-    er[i].onclick = function(){
-        document.getElementById("addFriend").style.display = "none";
-        document.getElementById("updateDelete").style.display = "block";
-    }
-}
-
-document.getElementById("updateButton").onclick = function(){
-    document.getElementById("addFriend").style.display = "block";
-    document.getElementById("updateDelete").style.display = "none";
-};
-
-document.getElementById("deleteButton").onclick = function(){
-    document.getElementById("addFriend").style.display = "block";
-    document.getElementById("updateDelete").style.display = "none";
-};
-
-document.getElementById("loginButton").onclick = function(){
-    document.getElementById("lgn").style.display = "none";
-    var es = document.getElementsByClassName("loggedIn");
-    for(var i=0; i<es.length; i++) {
-        es[i].style.display = "block";
-    }
-    document.getElementById("updateDelete").style.display = "none";
-};
-*/
 function addFriend(){
     var msgName = document.getElementById("addName").value;
     var msgVorname = document.getElementById("addVorname").value;
@@ -96,18 +70,17 @@ function updateList(){
         button.innerHTML = personenArray[i].name + " " + personenArray[i].vorname;
 
         document.getElementById("friendTable").appendChild(button);
-        //var tabellenEintrag = ' <tr><button type="button" class="nameButton" onclick="updatePerson()">'+ personenArray[i].vorname + " " + personenArray[i].name + '</button></tr><br>';
-        //document.getElementById("friendTable").innerHTML =  document.getElementById("friendTable").innerHTML + tabellenEintrag;
     }
     document.getElementById("addFriend").style.display = "none";
+	localStorage.setItem('personenArray', JSON.stringify(personenArray));
 }
 
 function showPerson(clicked_id){
     num = clicked_id;
-    alert(num);
 
     document.getElementById("updateDelete").style.display = "block";
     document.getElementById("actualProperties").style.display = "block";
+    document.getElementById("addFriend").style.display = "none"
 
     document.getElementById("actName").innerText = "Name: " + personenArray[num].name;
     document.getElementById("actVorname").innerText = "Vorname: " + personenArray[num].vorname;
@@ -161,12 +134,6 @@ function updateScreen(){
 
 function showAddFriend() {
     document.getElementById("addFriend").style.display = "block"
-}
-
-function initMap() {
-    var map;
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
-    });
+    document.getElementById("updateDelete").style.display = "none";
+    document.getElementById("actualProperties").style.display = "none";
 }
