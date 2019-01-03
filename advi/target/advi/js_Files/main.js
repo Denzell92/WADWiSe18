@@ -11,9 +11,15 @@ class Person{
     }
 }
 
+
+var loggedInPerson;
 var num;
+
 var personenArray = new Array();
 var tempPersonen =JSON.parse(localStorage.getItem('personenArray'));
+var showingFriendList = true;
+
+
 
 if(tempPersonen == null){
     personenArray.push(new Person("Dennis","Adler","Rummelsburgerstraße 35a","10315","Berlin","Deutschland","1"));
@@ -23,26 +29,51 @@ if(tempPersonen == null){
     personenArray = tempPersonen;
 }
 
+updateList();
+
 function logIn(){
 
+	//damit das funktioniert - muss ein mysql server mit der passenden Datenbank laufen
   	url = "http://localhost:8080/advi/login?userId="+document.getElementById("userId").value+"&password="+document.getElementById("password").value;
   	var httpVar = new XMLHttpRequest();
     httpVar.open( "GET", url, false );
     httpVar.send( null );
-    alert(httpVar.responseText);
+   
     if(httpVar.responseText == "No such userId/password combofalse"  || httpVar.responseText == "No such userId/password combotrue" ){
 		alert("Versuchen Sie es nochmal!");
     }else{
 		alert("Erfolg!");
+		loggedInPerson = JSON.parse(httpVar.responseText);
+		role ="";
+		if(loggedInPerson.isAdmin){role="admin"}
+		else{role="normalo"}
+		document.getElementById("userGreetings").innerHTML = "Hallo "+loggedInPerson.lastname+" "+loggedInPerson.firstname+" - Eingeloggt als ‚"+role+ "‘."
+		
 		document.getElementById("login").style.display = "none";
-    	document.getElementById("friendList").style.display = "block";
+    	document.getElementById("mainScreen").style.display = "block";
     	localStorage.getItem("nameOfFriends");
     	updateList();
     }
 
-	
-
 }
+
+
+function showFriends(){
+	if(showingFriendList){
+		document.getElementById("friendList").style.display = "block";
+		document.getElementById("mainScreen").style.display = "none";
+	}else{
+		document.getElementById("friendList").style.display = "none";
+		document.getElementById("mainScreen").style.display = "block";
+		document.getElementById("updateDelete").style.display = "none";
+    	document.getElementById("actualProperties").style.display = "none";
+    	document.getElementById("map").style.display = "none";
+	}
+	showingFriendList = !showingFriendList;
+	
+}
+
+
 
 function addFriend(){
     var msgName = document.getElementById("addName").value;

@@ -14,8 +14,10 @@
 <body>
 
 <div id="main">
+	<h1>Advi</h1>
+	<label id="userGreetings">Hello!</label>
     <div id="login">
-        <h1>Advi</h1>
+        
         <form>
             <ul>
                 <li class="loginElementList">Login:</li>
@@ -26,10 +28,16 @@
             </ul>
         </form>
     </div>
+    
+    <div id="mainScreen" class="loggedIn">
+            <button onclick="showAddFriend()">Add Friend</button>
+             <button onclick="showFriends()">Show</button>
+    </div>
+    
 
     <div id="friendList" class="loggedIn"  >
         <tr><h2>FriendList</h2></tr>
-        <button onclick="showAddFriend()">Add Friend</button>
+        <button onclick="showFriends()">Back</button>
         <table id="friendTable">
         </table>
     </div>
