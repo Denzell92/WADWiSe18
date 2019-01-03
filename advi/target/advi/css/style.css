@@ -1,76 +1,47 @@
 body {
+    background-color: lightblue;
+}
+#main {
+    background-color: white;
     margin-left: 20%;
     margin-right: 20%;
-    margin-top: 0%;
-    padding: 0;
-    background-color: #FFFFE0;
-    font-family: sans-serif;
+    height: 100%;
 }
 
-h1 {
-    font-style: italic;
-    text-align: left;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-
-}
-
-.login {
-    float: left;
+#login {
     width: 100%;
-    padding: 0px;
-    background: #555;;
-    color: white;
+    background-color: darkgray;
+}
+#olleListe {
+    background-color: darkgray;
 }
 
-ul {
-    float: right;
-    list-style: none;
-}
-
-li {
+.loginElementList {
     float: left;
-    text-decoration: none;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 5px;
-    text-align: center;
-}
-
-div {
-    background: lightblue;
-}
-
-#map {
-    text-align: center;
-}
-
-.main {
-    background: lightblue;
-    margin: auto;
-    padding: 20px;
-
+    margin-right: 10px;
+    margin-left:  10px;
 }
 
 #friendList {
-    background: darkgray;
-    margin-left: 0;
-    float: left;
-    padding: 10px;
-    width: 30%;
+    background-color: darkgray;
+    display: none;
 }
 
 #addFriend {
-    margin-left: 0%;
-    float: left;
-    padding: 10px;
-    width: 30%;
+    background-color: beige;
+    display: none;
 }
 
 #updateDelete {
-    margin-left: 0%;
-    float: left;
-    padding: 10px;
-    width: 30%;
+    display: none;
+}
+
+#actualProperties {
+    display: none;
+}
+
+#map {
+    width: 600px;
+    height: 400px;
+    display: none;
 }

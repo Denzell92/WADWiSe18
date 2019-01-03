@@ -27,6 +27,12 @@ body {
     display: none;
 }
 
+
+#mainScreen {
+background-color: darkgray;
+    display: none;
+}
+
 #addFriend {
     background-color: beige;
     display: none;
