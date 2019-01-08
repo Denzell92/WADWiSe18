@@ -91,24 +91,32 @@ function showMainScreen(){
 
 
 function addFriend(){
-    var msgName = document.getElementById("addName").value;
-    var msgVorname = document.getElementById("addVorname").value;
-    var msgStreet = document.getElementById("addStreet").value;
-    var msgPlz = document.getElementById("addPlz").value;
-    var msgTown = document.getElementById("addTown").value;
-    var msgLand = document.getElementById("addLand").value;
-    var id = personenArray.length;
+    if (document.getElementById("addName").value == "" || document.getElementById("addVorname").value == "" ||
+        document.getElementById("addStreet").value == "" || document.getElementById("addPlz").value == "" ||
+        document.getElementById("addTown").value == "" || document.getElementById("addLand").value == "") {
+        alert("Sie muessen mindestens Vornamen, Nachnamen, Stadt und Land angeben")
+    } else {
+        var msgName = document.getElementById("addName").value;
+        var msgVorname = document.getElementById("addVorname").value;
+        var msgStreet = document.getElementById("addStreet").value;
+        var msgPlz = document.getElementById("addPlz").value;
+        var msgTown = document.getElementById("addTown").value;
+        var msgLand = document.getElementById("addLand").value;
+        var id = personenArray.length;
 
-	var xhttpAddContact = new XMLHttpRequest();
-    xhttpAddContact.open("POST", "urlContacts = \"http://localhost:8080/advi/add?\"", true);
-    xhttpAddContact.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttpAddContact.send("lastName=" + msgName + "&firstname=" + msgVorname + "&street=" + msgStreet + "&plz="
-        + msgPlz + "&town=" + msgTown + "&land=" + msgLand);
-	
-	
-    personenArray.push(new Person(msgName, msgVorname, msgStreet, msgTown, msgPlz, msgLand, id));
-    updateList();
-    showMainScreen();
+
+
+        personenArray.push(new Person(msgName, msgVorname, msgStreet, msgTown, msgPlz, msgLand, id));
+
+        var xhttpAddContact = new XMLHttpRequest();
+        xhttpAddContact.open("POST", "urlContacts = \"http://localhost:8080/advi/add?\"", true);
+        xhttpAddContact.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttpAddContact.send("lastName=" + msgName + "&firstname=" + msgVorname + "&street=" + msgStreet + "&plz="
+            + msgPlz + "&town=" + msgTown + "&land=" + msgLand);
+        
+        updateList();
+        showMainScreen();
+    }
 }
 
 function updateList(){
