@@ -98,6 +98,14 @@ function addFriend(){
     var msgTown = document.getElementById("addTown").value;
     var msgLand = document.getElementById("addLand").value;
     var id = personenArray.length;
+
+	var xhttpAddContact = new XMLHttpRequest();
+    xhttpAddContact.open("POST", "urlContacts = \"http://localhost:8080/advi/add?\"", true);
+    xhttpAddContact.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttpAddContact.send("lastName=" + msgName + "&firstname=" + msgVorname + "&street=" + msgStreet + "&plz="
+        + msgPlz + "&town=" + msgTown + "&land=" + msgLand);
+	
+	
     personenArray.push(new Person(msgName, msgVorname, msgStreet, msgTown, msgPlz, msgLand, id));
     updateList();
     showMainScreen();
