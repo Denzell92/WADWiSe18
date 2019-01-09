@@ -32,21 +32,23 @@ public class ContactsDBDAO implements IContactsDAO {
     @Override
     public List<Contact> getAllContacts() {
         List<Contact> contacts = new ArrayList<Contact>();
-        try {
+        int notFound = 0;
+        for(int i = 1; i <= 30; i++){
+            try {
             //String sql = "SELECT id, userId, password, firstName, lastName, isAdmin FROM user WHERE userId = ?";
             //int i = 1;
-            for(int i = 1; i <= 30; i++){
+                if(notFound >= 4){break;}
                 String sql = "SELECT id, firstname, lastname, street, plz, town, country FROM Contacts WHERE id = ?";
                 RowMapper<Contact> rowMapper = new BeanPropertyRowMapper<Contact>(Contact.class);
                 Contact c = jdbcTemplate.queryForObject(sql, rowMapper,i);
                 if(c != null){contacts.add(c);}
+            }catch (DataAccessException dae) {
+                System.out.println("Caught: " + dae.getMessage());
+                notFound++;
+               // return contacts;
             }
-            return contacts;
-
-        } catch (DataAccessException dae) {
-            System.out.println("Caught: " + dae.getMessage());
-            return contacts;
         }
+        return contacts;
     }
 
     @Override

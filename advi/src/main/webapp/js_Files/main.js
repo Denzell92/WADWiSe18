@@ -166,7 +166,7 @@ function updatePerson(){
 function deletePerson(){
 
 	var x = new XMLHttpRequest();
-	urlDel = "http://localhost:8080/advi/delete?userID="+num;
+	urlDel = "http://localhost:8080/advi/delete?userID="+(personenArray[num].id);
 	x.open("DELETE",urlDel, true);
 	x.send( null );
 	alert(urlDel);
