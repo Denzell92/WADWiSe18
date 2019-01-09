@@ -56,15 +56,18 @@ function logIn(){
     	document.getElementById("mainScreen").style.display = "block";
     	//localStorage.getItem("nameOfFriends");
     	//updateList();
+        actualise();
+        updateList();
     }
-    
-    
+
+}
+
+function actualise(){
     urlContacts = "http://localhost:8080/advi/getContacts?"
     var httpVarContacts = new XMLHttpRequest();
     httpVarContacts.open( "GET", urlContacts, false );
     httpVarContacts.send( null );
     personenArray = JSON.parse( httpVarContacts.responseText);
-	updateList();
 }
 
 
@@ -98,7 +101,7 @@ function addFriend(){
     var msgTown = document.getElementById("addTown").value;
     var msgLand = document.getElementById("addLand").value;
     var id = personenArray.length;
-	alert("adadkooadk");
+
 	var xhttpAddContact = new XMLHttpRequest();
     xhttpAddContact.open("POST", "http://localhost:8080/advi/add", true);
     xhttpAddContact.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
@@ -106,6 +109,7 @@ function addFriend(){
 	
 	alert(xhttpAddContact.response);
     //personenArray.push(new Person(msgName, msgVorname, msgStreet, msgTown, msgPlz, msgLand, id));
+    actualise();
     updateList();
     showMainScreen();
 }
@@ -126,10 +130,10 @@ function updateList(){
 function showPerson(clicked_id){
     num = clicked_id;
 
-    document.getElementById("updateDelete").style.display = "block";
+    document.getElementById("updateDelete").style.display = "inline-block";
     document.getElementById("actualProperties").style.display = "block";
     initMap();
-    document.getElementById("map").style.display = "block";
+    document.getElementById("map").style.display = "inline-block";
     document.getElementById("addFriend").style.display = "none";
 
     document.getElementById("actName").innerText = "Name: " + personenArray[num].lastname;
@@ -161,6 +165,8 @@ function updatePerson(){
     document.getElementById("actualProperties").style.display = "none";
     document.getElementById("map").style.display = "none";
 
+    actualise();
+
 }
 
 function deletePerson(){
@@ -173,6 +179,7 @@ function deletePerson(){
 
     var index = personenArray.indexOf(personenArray[num]);
     personenArray.splice(index, 1);
+    actualise();
     updateList();
     
 
@@ -192,7 +199,7 @@ function updateScreen(){
 }
 
 function showAddFriend() {
-    document.getElementById("addFriend").style.display = "block"
+    document.getElementById("addFriend").style.display = "inline-block";
     document.getElementById("updateDelete").style.display = "none";
     document.getElementById("actualProperties").style.display = "none";
 }
@@ -211,7 +218,7 @@ function initMap() {
 }
 
 function geocodeAddress(geocoder, resultsMap) {
-    var address = personenArray[num].strasse + "." + personenArray[num].plz + "," + personenArray[num].stadt + "," + personenArray[num].land;
+    var address = personenArray[num].street + "." + personenArray[num].plz + "," + personenArray[num].town + "," + personenArray[num].country;
     //var address = document.getElementById('address').value;
     geocoder.geocode({'address': address}, function(results, status) {
         if (status === 'OK') {
