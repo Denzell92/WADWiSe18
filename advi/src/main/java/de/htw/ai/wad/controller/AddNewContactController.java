@@ -48,8 +48,8 @@ public class AddNewContactController {
 	    cDAO.addContact(con);
 	    boolean e = true;
 	    HttpHeaders responseHeaders = new HttpHeaders();
-		return new ResponseEntity<String>("No such userId/password combo",
-				responseHeaders, HttpStatus.UNAUTHORIZED);
+		return new ResponseEntity<String>("Success!",
+				responseHeaders, HttpStatus.OK);
 
 	}
 	
