@@ -22,25 +22,11 @@ public class DeleteContactController {
     // http://localhost:8080/loginMVC/login?userId=admin&password=password
 	@RequestMapping(value="/delete", method=RequestMethod.GET)
 	public ResponseEntity<String> addContact (
-	        @RequestParam("firstname") String fName,
-	        @RequestParam("lastname") String lName,
-			@RequestParam("street") String street,
-			@RequestParam("town") String town,
-			@RequestParam("plz") String plz,
-			@RequestParam("country") String country
+	        @RequestParam("userID") String uID
 
 	) throws IOException {
 
-	    Contact con = new Contact();
-		con.setPlz(plz);
-		con.setFirstname(fName);
-		con.setLastname(lName);
-		con.setCountry(country);
-		con.setTown(town);
-		con.setStreet(street);
-
-
-	    cDAO.addContact(con);
+	    cDAO.deleteContact(uID);
 	    boolean e = true;
 	    HttpHeaders responseHeaders = new HttpHeaders();
 		return new ResponseEntity<String>("No such userId/password combo", responseHeaders, HttpStatus.UNAUTHORIZED);

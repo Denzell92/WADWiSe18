@@ -101,11 +101,12 @@ function addFriend(){
 	alert("adadkooadk");
 	var xhttpAddContact = new XMLHttpRequest();
     xhttpAddContact.open("POST", "http://localhost:8080/advi/add", true);
-    xhttpAddContact.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-    xhttpAddContact.send("lastname=" + msgName + "&firstname=" + msgVorname + "&street=" + msgStreet + "&plz="+ msgPlz + "&town=" + msgTown + "&country=" + msgLand);
+    xhttpAddContact.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttpAddContact.send("lastName=" + msgName + "&firstname=" + msgVorname + "&street=" + msgStreet + "&plz="
+        + msgPlz + "&town=" + msgTown + "&land=" + msgLand);
 	
 	alert(xhttpAddContact.response);
-    //personenArray.push(new Person(msgName, msgVorname, msgStreet, msgTown, msgPlz, msgLand, id));
+    personenArray.push(new Person(msgName, msgVorname, msgStreet, msgTown, msgPlz, msgLand, id));
     updateList();
     showMainScreen();
 }
