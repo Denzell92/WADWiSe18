@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aab1c2f9-ed74-4b9d-8829-8454cb1ca6cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/htw/ai/wad/controller/DeleteContactController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/htw/ai/wad/controller/DeleteContactController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js_Files/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js_Files/main.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />

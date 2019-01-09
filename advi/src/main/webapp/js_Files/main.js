@@ -165,9 +165,16 @@ function updatePerson(){
 
 function deletePerson(){
 
+	var x = new XMLHttpRequest();
+	urlDel = "http://localhost:8080/advi/delete?userID="+num;
+	x.open("DELETE",urlDel, true);
+	x.send( null );
+	alert(urlDel);
+
     var index = personenArray.indexOf(personenArray[num]);
     personenArray.splice(index, 1);
     updateList();
+    
 
     document.getElementById("updateDelete").style.display = "none";
     document.getElementById("actualProperties").style.display = "none";
