@@ -51,19 +51,19 @@ public class ContactsDBDAO implements IContactsDAO {
 
     @Override
     public void addContact(Contact c) {
-        // TODO Auto-generated method stub
-
+        String sql = "INSERT INTO Contacts (id, firstname, lastname, street, plz, town, country) VALUES ('"+c.getId()+"','"+c.getFirstname()+"','"+c.getLastname()+"','"+c.getStreet()+"','"+c.getPlz()+"','"+c.getTown()+"','"+c.getCountry() +"')  ;";
+        jdbcTemplate.execute(sql);
     }
 
     @Override
     public void updateContact(Contact c) {
-        // TODO Auto-generated method stub
-
+        String sql = "UPDATE Contacts SET firstname = '"+c.getFirstname()+"',lastname = '"+c.getLastname()+"',street = '"+c.getStreet()+"',town = '"+c.getTown()+"',plz = '"+c.getPlz()+"',country = '"+c.getCountry()+"'  WHERE id = '"+c.getId()+"';";
+        jdbcTemplate.execute(sql);
     }
 
     @Override
     public void deleteContact(String cID) {
-        // TODO Auto-generated method stub
-
+        String sql = "DELETE FROM Contacts WHERE id = '"+cID+"';";
+        jdbcTemplate.execute(sql);
     }
 }
