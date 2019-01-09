@@ -20,7 +20,7 @@ public class DeleteContactController {
 	IContactsDAO cDAO;
 	
     // http://localhost:8080/loginMVC/login?userId=admin&password=password
-	@RequestMapping(value="/delete", method=RequestMethod.GET)
+	@RequestMapping(value="/delete", method=RequestMethod.DELETE)
 	public ResponseEntity<String> addContact (
 	        @RequestParam("userID") String uID
 
