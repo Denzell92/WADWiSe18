@@ -107,7 +107,7 @@ function addFriend(){
     xhttpAddContact.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
     xhttpAddContact.send("lastname=" + msgName + "&firstname=" + msgVorname + "&street=" + msgStreet + "&plz="+ msgPlz + "&town=" + msgTown + "&country=" + msgLand);
 	
-	alert(xhttpAddContact.response);
+	//alert(xhttpAddContact.response);
     //personenArray.push(new Person(msgName, msgVorname, msgStreet, msgTown, msgPlz, msgLand, id));
     actualise();
     updateList();
@@ -175,7 +175,7 @@ function deletePerson(){
 	urlDel = "http://localhost:8080/advi/delete?userID="+(personenArray[num].id);
 	x.open("DELETE",urlDel, true);
 	x.send( null );
-	alert(urlDel);
+	//alert(urlDel);
 
     var index = personenArray.indexOf(personenArray[num]);
     personenArray.splice(index, 1);

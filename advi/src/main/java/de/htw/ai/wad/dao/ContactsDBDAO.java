@@ -41,7 +41,7 @@ public class ContactsDBDAO implements IContactsDAO {
                 String sql = "SELECT id, firstname, lastname, street, plz, town, country FROM Contacts WHERE id = ?";
                 RowMapper<Contact> rowMapper = new BeanPropertyRowMapper<Contact>(Contact.class);
                 Contact c = jdbcTemplate.queryForObject(sql, rowMapper,i);
-                if(c != null){contacts.add(c);}
+                if(c != null){contacts.add(c);notFound=0;}
             }catch (DataAccessException dae) {
                 System.out.println("Caught: " + dae.getMessage());
                 notFound++;
