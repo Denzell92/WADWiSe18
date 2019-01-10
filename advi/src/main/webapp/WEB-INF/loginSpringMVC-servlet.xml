@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd">
+ 
+    <!--  explicit support for annotation-driven MVC controllers 
+         e.g., @RequestMapping, @Controller -->
+    <mvc:annotation-driven />
+    
+    <!-- enable auto scanning feature: 
+         base-package: package, wo sich die Controller befinden. 
+         Spring wird dieses Vezeichnis scannen und die Beans, 
+         die, z.B., mit @Controller annotiert sind, finden und registrieren. -->
+    <context:component-scan
+        base-package="de.htw.ai.wad" />
+    <mvc:default-servlet-handler />
+ 
+    <bean id="userDBDAO" class="de.htw.ai.wad.dao.UserDBDAO">
+        <property name="jdbcTemplate" ref="jdbcTemplate" />
+    </bean>
+
+    <!-- DataSource Configurations 
+         class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" 
+         class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
+    -->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/advi" />
+        <property name="username" value="root" />
+        <property name="password" value="12345678" />
+     </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+ 
+</beans>

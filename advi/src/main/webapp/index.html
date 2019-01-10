@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Helferlein</title>
+    <meta charset="utf-8">
+    <title>Advi</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="js_Files/main.js"></script>
     <script async defer
@@ -10,26 +10,36 @@
         //&key=AIzaSyAr_bxzRBsSd9QUXLavt1SKF558V90l29c
     </script>
 </head>
+<header>
+    <h1>Advi</h1>
+    <label id="userGreetings">Hello!</label>
+</header>
 
 <body>
 
 <div id="main">
+
     <div id="login">
-        <h1>Advi</h1>
         <form>
             <ul>
                 <li class="loginElementList">Login:</li>
-                <li class="loginElementList"><input type="text"></li>
+                <li class="loginElementList"><input type="text" id="userId"></li>
                 <li class="loginElementList">Password:</li>
-                <li class="loginElementList"><input type="text"></li>
+                <li class="loginElementList"><input type="text" id="password"></li>
                 <li class="loginElementList"><button type="button" id="loginButton" onclick="logIn()">Login</button></li>
             </ul>
         </form>
     </div>
 
+    <div id="mainScreen" class="loggedIn">
+        <button onclick="showAddFriend()" id="addFriendButton">Add Friend</button>
+        <button onclick="showFriends()">Show</button>
+    </div>
+
+
     <div id="friendList" class="loggedIn"  >
         <tr><h2>FriendList</h2></tr>
-        <button onclick="showAddFriend()">Add Friend</button>
+        <button onclick="showFriends()">Back</button>
         <table id="friendTable">
         </table>
     </div>
@@ -62,7 +72,7 @@
                 <td><input type="text" id="addLand"></td>
             </tr>
         </table>
-        <button type="button" onclick="addFriend()">Add</button>
+        <button type="button" onclick="addFriend()" id="addFriendAddButton">Add</button>
     </div>
 
     <div id="updateDelete">
